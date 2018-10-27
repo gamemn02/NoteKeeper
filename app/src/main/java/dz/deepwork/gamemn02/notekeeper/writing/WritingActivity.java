@@ -11,12 +11,21 @@ import dz.deepwork.gamemn02.notekeeper.R;
 
 public class WritingActivity extends AppCompatActivity {
 
+    public static final String BUNDLE_NOTE_INDEX = "dz.deepwork.gamemn02.notekeeper.noteindex";
+    public static final int NOTE_INDEX_NEW_NOTE = -1;
+
+    private boolean mNewNote;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_writing);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        if (getIntent().getIntExtra(BUNDLE_NOTE_INDEX, NOTE_INDEX_NEW_NOTE) == NOTE_INDEX_NEW_NOTE) {
+            mNewNote = true;
+        }
     }
 
 }
