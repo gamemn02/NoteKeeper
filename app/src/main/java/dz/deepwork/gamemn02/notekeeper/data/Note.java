@@ -17,4 +17,9 @@ public class Note {
     public String getBody() {
         return body;
     }
+
+    @Override
+    public String toString() {
+        return title + "\n\t" + body;
+    }
 }
