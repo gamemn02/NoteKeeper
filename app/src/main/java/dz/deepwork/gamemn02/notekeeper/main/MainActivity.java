@@ -19,6 +19,8 @@ import dz.deepwork.gamemn02.notekeeper.writing.WritingActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ArrayAdapter<Note> mAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,12 +29,12 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         NoteRepository noteRepository = NoteRepository.getInstance();
-        ArrayAdapter<Note> noteAdapter = new ArrayAdapter<>(
+        mAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
                 noteRepository.getNotes());
         ListView listView = (ListView) findViewById(R.id.list_notes);
-        listView.setAdapter(noteAdapter);
+        listView.setAdapter(mAdapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     @Override
@@ -75,5 +76,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
     }
 }
