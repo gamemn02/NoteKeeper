@@ -1,5 +1,7 @@
 package dz.deepwork.gamemn02.notekeeper.writing;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,11 +13,21 @@ import dz.deepwork.gamemn02.notekeeper.R;
 
 public class WritingActivity extends AppCompatActivity {
 
-    public static final String BUNDLE_NOTE_INDEX = "dz.deepwork.gamemn02.notekeeper.noteindex";
+    public static final String EXTRA_NOTE_INDEX = "dz.deepwork.gamemn02.notekeeper.noteindex";
     public static final int NOTE_INDEX_NEW_NOTE = -1;
 
     private boolean mNewNote;
     private int mNoteIndex;
+
+    public static Intent createIntent(Context context, int noteIndex) {
+        Intent intent = new Intent(
+                context,
+                WritingActivity.class);
+        intent.putExtra(
+                EXTRA_NOTE_INDEX,
+                noteIndex);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +36,7 @@ public class WritingActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mNoteIndex = getIntent().getIntExtra(BUNDLE_NOTE_INDEX, NOTE_INDEX_NEW_NOTE);
+        mNoteIndex = getIntent().getIntExtra(EXTRA_NOTE_INDEX, NOTE_INDEX_NEW_NOTE);
         mNewNote = mNoteIndex == NOTE_INDEX_NEW_NOTE;
 
     }
