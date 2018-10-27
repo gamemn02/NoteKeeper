@@ -10,7 +10,7 @@ public class NoteRepository {
     private static NoteRepository sInstance;
     private static ArrayList<Note> sNotes;
 
-    public static NoteRepository getsInstance() {
+    public static NoteRepository getInstance() {
         if (sInstance == null) {
             synchronized (LOCK) {
                 if (sInstance == null) {
