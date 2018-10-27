@@ -22,7 +22,10 @@ public class NoteRepository {
     }
 
     private NoteRepository() {
-
+        sNotes = new ArrayList<Note>(Arrays.asList(
+                new Note("title1", "body1"),
+                new Note("title2", "body2"),
+                new Note("title3", "body3")));
     }
 
     public List<Note> getNotes() {
