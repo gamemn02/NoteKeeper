@@ -8,8 +8,11 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import dz.deepwork.gamemn02.notekeeper.R;
+import dz.deepwork.gamemn02.notekeeper.data.Note;
+import dz.deepwork.gamemn02.notekeeper.data.NoteRepository;
 
 public class WritingActivity extends AppCompatActivity {
 
@@ -39,6 +42,13 @@ public class WritingActivity extends AppCompatActivity {
         mNoteIndex = getIntent().getIntExtra(EXTRA_NOTE_INDEX, NOTE_INDEX_NEW_NOTE);
         mNewNote = mNoteIndex == NOTE_INDEX_NEW_NOTE;
 
+        if (!mNewNote) {
+            TextView titleTextView = (TextView) findViewById(R.id.et_title);
+            TextView bodyTextView = (TextView) findViewById(R.id.et_body);
+            Note note = NoteRepository.getInstance().getNotes().get(mNoteIndex);
+            titleTextView.setText(note.getTitle());
+            bodyTextView.setText(note.getBody());
+        }
     }
 
 }
