@@ -1,4 +1,10 @@
 <resources>
+    <!--For main activity-->
     <string name="app_name">NoteKeeper</string>
     <string name="action_settings">Settings</string>
+
+    <!--For writing activity-->
+    <string name="title_activity_writing">WritingActivity</string>
+    <string name="string_title_hint">Title</string>
+    <string name="string_body_hint">write your note here</string>
 </resources>
