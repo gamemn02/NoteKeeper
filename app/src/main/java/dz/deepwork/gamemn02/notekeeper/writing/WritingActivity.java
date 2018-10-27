@@ -25,6 +25,8 @@ public class WritingActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         mNoteIndex = getIntent().getIntExtra(BUNDLE_NOTE_INDEX, NOTE_INDEX_NEW_NOTE);
+        mNewNote = mNoteIndex == NOTE_INDEX_NEW_NOTE;
+
     }
 
 }
